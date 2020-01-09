@@ -19,6 +19,7 @@ public class Acquier {
     private int Mounth;
     private int Year;
     private String PhoneNumber;
+    public boolean toString;
     
     public Acquier(){
     }
