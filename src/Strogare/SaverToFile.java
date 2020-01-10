@@ -30,7 +30,7 @@ public class SaverToFile implements Savable{
         FileOutputStream fileOutputStream = null;
         ObjectOutputStream objectOutputStream = null;
         try {
-            fileOutputStream = new FileOutputStream("Books.txt");
+            fileOutputStream = new FileOutputStream("Products.txt");
             objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(products);
             objectOutputStream.flush();
@@ -57,6 +57,7 @@ public class SaverToFile implements Savable{
         
     }
 
+   
     @Override
     public Collection<? extends Product> loadProducts() {
         ArrayList<Product> products = new ArrayList<>();

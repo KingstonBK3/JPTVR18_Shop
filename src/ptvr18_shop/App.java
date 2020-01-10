@@ -24,13 +24,13 @@ public class App {
     private ArrayList<Product> products = new ArrayList<>();
     private ArrayList<Acquier> acquiers = new ArrayList<>();
     private ArrayList<History> histories = new ArrayList<>();
-    private Savable saveble;
+    private Savable savable;
         public App() {
-            this.saveble = new SaverToFile();
+            this.savable = new SaverToFile();
            // this.saveble = new SaverToBase();
-            this.products.addAll(saveble.loadProducts());
-            this.acquiers.addAll(saveble.loadAcquiers());
-            this.histories.addAll(saveble.loadHistories());
+            this.products.addAll(savable.loadProducts());
+            this.acquiers.addAll(savable.loadAcquiers());
+            this.histories.addAll(savable.loadHistories());
         }
      public void run() {
         System.out.println("Продуктовый магазин");
@@ -56,13 +56,13 @@ public class App {
                 case 1:
                     ProductProvider productProvider = new ProductProvider();
                     products.add(productProvider.createProduct());
-                    //saveble.saveProducts(products);
+                    savable.saveProducts(products);
                     break;
             //Создание покупателя.
                 case 2:
                     AcquierProvider acquierProvider = new AcquierProvider();
                     acquiers.add(acquierProvider.createAcquier());
-                    //saveble.saveReaders(readers);
+                    savable.saveAcquiers(acquiers);
                     break;
             //Список всех товаров.
                 case 3:
@@ -93,7 +93,7 @@ public class App {
                     History history = historyProvider.takeOnProduct(products,acquiers,histories);
                     if(history != null){
                         histories.add(history);
-                        //saveble.saveHistories(histories);
+                        savable.saveHistories(histories);
                     }
                     break;
             //Подсчет прибыли магазиа за все время работы.
