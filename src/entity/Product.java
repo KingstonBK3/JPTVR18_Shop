@@ -94,5 +94,10 @@ public class Product {
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" + "Id=" + Id + ", Name=" + Name + ", Price=" + Price + ", idpr=" + idpr + '}';
+    }
     
 }

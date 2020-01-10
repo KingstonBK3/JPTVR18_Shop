@@ -5,12 +5,15 @@
  */
 package ptvr18_shop;
 
+import Strogare.Savable;
+import Strogare.SaverToFile;
 import entity.Acquier;
 import entity.History;
 import entity.Product;
 import java.util.ArrayList;
 import java.util.Scanner;
 import myclasses.AcquierProvider;
+import myclasses.HistoryProvider;
 import myclasses.ProductProvider;
 
 /**
@@ -21,16 +24,14 @@ public class App {
     private ArrayList<Product> products = new ArrayList<>();
     private ArrayList<Acquier> acquiers = new ArrayList<>();
     private ArrayList<History> histories = new ArrayList<>();
-    /*private Saveble saveble;
+    private Savable saveble;
         public App() {
-           // this.saveble = new SaverToFile();
-            this.saveble = new SaverToBase();
-            this.books.addAll(saveble.loadBooks());
-            this.readers.addAll(saveble.loadReaders());
-           // this.histories.addAll(saveble.loadHistories());
+            this.saveble = new SaverToFile();
+           // this.saveble = new SaverToBase();
+            this.products.addAll(saveble.loadProducts());
+            this.acquiers.addAll(saveble.loadAcquiers());
+            this.histories.addAll(saveble.loadHistories());
         }
-            
-    }*/
      public void run() {
         System.out.println("Продуктовый магазин");
         boolean repeat = true;
@@ -39,8 +40,8 @@ public class App {
             System.out.println("1. Создание продута.");
             System.out.println("2. Создание покупателя.");
             System.out.println("3. Список всех товаров.");
-            System.out.println("4. Приобрести продукт.");
-            System.out.println("5. Список всех пользователей.");
+            System.out.println("4. Список всех пользователей.");
+            System.out.println("5. Приобрести продукт.");
             System.out.println("6. Подсчет прибыли магазиа за все время работы.");
             System.out.println("Выберите задачу: ");
             repeat = true;
@@ -80,20 +81,25 @@ public class App {
                        flag=true; 
                     }
                     break;
-            //Приобрести продукт.
-                case 4:
-                    
-                    break;
             //Список всех пользователей.
-                case 5:
+                case 4:
                     for (int i = 0; i < acquiers.size(); i++) {
                         System.out.println(acquiers.get(i).toString());
                     }
+                    break;            
+            //Приобрести продукт.
+                case 5:
+                    HistoryProvider historyProvider = new HistoryProvider();
+                    History history = historyProvider.takeOnProduct(products,acquiers,histories);
+                    if(history != null){
+                        histories.add(history);
+                        //saveble.saveHistories(histories);
+                    }
                     break;
             //Подсчет прибыли магазиа за все время работы.
-                /*case 6:
-                    
-                    break;*/
+                case 6:
+                    System.out.println("Функция не готова!");
+                    break;
                 default:
                     System.out.println("Выберите задачу из списка!");
                     break;
