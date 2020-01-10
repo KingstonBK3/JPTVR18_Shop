@@ -13,10 +13,10 @@ import java.util.Scanner;
  * @author User
  */
 public class AcquierProvider {
-    public Acquier createReader(){
+    public Acquier createAcquier(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("---- Создание покупателя ----");
-        System.out.println("Имя читателя: ");
+        System.out.println("Имя покупателя: ");
         String name = scanner.nextLine();
         System.out.println("Фамилия покупателя: ");
         String surname = scanner.nextLine();

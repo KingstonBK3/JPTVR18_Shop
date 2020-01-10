@@ -22,10 +22,9 @@ public class ProductProvider {
         System.out.println("Цена");
         int Price = scanner.nextInt();
         scanner.nextLine();
-        System.out.println("Дата продажи:");
-        int DateOfSale = scanner.nextInt();
-        scanner.nextLine();
-        Product product = new Product(Name,Price,DateOfSale);
+        System.out.println("Идентификатор товара:");
+        String idpr = scanner.nextLine();
+        Product product = new Product(Name,Price,idpr);
         return product;
     }
 }

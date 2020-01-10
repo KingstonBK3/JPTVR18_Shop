@@ -15,61 +15,56 @@ public class Product {
     private Long Id;
     private String Name;
     private int Price;
-    private int DateOfSale;
+    private String idpr;
     
     public Product(){
     };
     
-    public Product(String Name,int Price,int DateOfSale){
+    public Product(String Name,int Price,String idpr){
         this.Name = Name;
         this.Price = Price;
-        this.DateOfSale = DateOfSale;
+        this.idpr = idpr;
     }
 
     public Long getId() {
         return Id;
     }
 
-    public String getName() {
-        return Name;
-    }
-
-    public int getPrice() {
-        return Price;
-    }
-
-    public int getDateOfSale() {
-        return DateOfSale;
-    }
-
     public void setId(Long Id) {
         this.Id = Id;
+    }
+
+    public String getName() {
+        return Name;
     }
 
     public void setName(String Name) {
         this.Name = Name;
     }
 
+    public int getPrice() {
+        return Price;
+    }
+
     public void setPrice(int Price) {
         this.Price = Price;
     }
 
-    public void setDateOfSale(int DateOfSale) {
-        this.DateOfSale = DateOfSale;
+    public String getIdpr() {
+        return idpr;
+    }
+
+    public void setIdpr(String idpr) {
+        this.idpr = idpr;
     }
 
     @Override
-    public String toString() {
-        return "Product{" + "Id=" + Id + ", Name=" + Name + ", Price=" + Price + ", DateOfSale=" + DateOfSale + '}';
-    }
-    
-    @Override
     public int hashCode() {
         int hash = 7;
-        hash = 89 * hash + Objects.hashCode(this.Id);
-        hash = 89 * hash + Objects.hashCode(this.Name);
-        hash = 89 * hash + this.Price;
-        hash = 89 * hash + this.DateOfSale;
+        hash = 19 * hash + Objects.hashCode(this.Id);
+        hash = 19 * hash + Objects.hashCode(this.Name);
+        hash = 19 * hash + this.Price;
+        hash = 19 * hash + Objects.hashCode(this.idpr);
         return hash;
     }
 
@@ -88,10 +83,10 @@ public class Product {
         if (this.Price != other.Price) {
             return false;
         }
-        if (this.DateOfSale != other.DateOfSale) {
+        if (!Objects.equals(this.Name, other.Name)) {
             return false;
         }
-        if (!Objects.equals(this.Name, other.Name)) {
+        if (!Objects.equals(this.idpr, other.idpr)) {
             return false;
         }
         if (!Objects.equals(this.Id, other.Id)) {
@@ -99,6 +94,5 @@ public class Product {
         }
         return true;
     }
-    
     
 }

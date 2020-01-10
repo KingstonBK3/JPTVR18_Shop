@@ -38,8 +38,8 @@ public class App {
             System.out.println("0. Выход из программы.");
             System.out.println("1. Создание продута.");
             System.out.println("2. Создание покупателя.");
-            System.out.println("3. Приобрести продукт.");
-            System.out.println("4. Список всех товаров.");
+            System.out.println("3. Список всех товаров.");
+            System.out.println("4. Приобрести продукт.");
             System.out.println("5. Список всех пользователей.");
             System.out.println("6. Подсчет прибыли магазиа за все время работы.");
             System.out.println("Выберите задачу: ");
@@ -57,8 +57,14 @@ public class App {
                     products.add(productProvider.createProduct());
                     //saveble.saveProducts(products);
                     break;
-            //Список всех товаров.
+            //Создание покупателя.
                 case 2:
+                    AcquierProvider acquierProvider = new AcquierProvider();
+                    acquiers.add(acquierProvider.createAcquier());
+                    //saveble.saveReaders(readers);
+                    break;
+            //Список всех товаров.
+                case 3:
                     boolean flag = true;
                     for (int i = 0; i < products.size(); i++) {
                        for(History history: histories){
@@ -74,12 +80,6 @@ public class App {
                        flag=true; 
                     }
                     break;
-            //Создание покупателя.
-                case 3:
-                    AcquierProvider acquierProvider = new AcquierProvider();
-                    acquiers.add(acquierProvider.createAcquier());
-                    //saveble.saveReaders(readers);
-                    break;
             //Приобрести продукт.
                 case 4:
                     
@@ -88,6 +88,7 @@ public class App {
                 case 5:
                     for (int i = 0; i < acquiers.size(); i++) {
                         System.out.println(acquiers.get(i).toString());
+                    }
                     break;
             //Подсчет прибыли магазиа за все время работы.
                 /*case 6:
@@ -97,5 +98,6 @@ public class App {
                     System.out.println("Выберите задачу из списка!");
                     break;
             }
-        } while (repeat);
-        }
+        }while (repeat);
+    }
+}
