@@ -82,7 +82,7 @@ public class SaverToFile implements Savable{
         FileOutputStream fileOutputStream = null;
         ObjectOutputStream objectOutputStream = null;
         try {
-            fileOutputStream = new FileOutputStream("Readers.txt");
+            fileOutputStream = new FileOutputStream("Acquiers.txt");
             objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(acquiers);
             objectOutputStream.flush();

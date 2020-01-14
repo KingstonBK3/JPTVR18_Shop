@@ -5,26 +5,40 @@
  */
 package entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author pupil
  */
-public class History {
+@Entity
+public class History implements Serializable{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
+    @Temporal(TemporalType.TIMESTAMP)
     private Date GiveOfDate;
+    @Temporal(TemporalType.TIMESTAMP)
     private Product product;
+    @OneToOne
     private Acquier user;
     
+    private int CountOfProduct;
+            
     public History(){
     }
-    
-    public History(Date GiveOfDate,Product product,Acquier user){
-        this.GiveOfDate = GiveOfDate;
-        this.product = product;
-        this.user = user;
+
+    public History(Object object, Product product, Acquier acquier, int countProduct) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public Long getId() {
@@ -59,18 +73,22 @@ public class History {
         this.user = user;
     }
 
-    @Override
-    public String toString() {
-        return "History{" + "Id=" + Id + ", GiveOfDate=" + GiveOfDate + ", product=" + product + ", user=" + user + '}';
+    public int getCountOfProduct() {
+        return CountOfProduct;
+    }
+
+    public void setCountOfProduct(int CountOfProduct) {
+        this.CountOfProduct = CountOfProduct;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 83 * hash + Objects.hashCode(this.Id);
-        hash = 83 * hash + Objects.hashCode(this.GiveOfDate);
-        hash = 83 * hash + Objects.hashCode(this.product);
-        hash = 83 * hash + Objects.hashCode(this.user);
+        hash = 59 * hash + Objects.hashCode(this.Id);
+        hash = 59 * hash + Objects.hashCode(this.GiveOfDate);
+        hash = 59 * hash + Objects.hashCode(this.product);
+        hash = 59 * hash + Objects.hashCode(this.user);
+        hash = 59 * hash + this.CountOfProduct;
         return hash;
     }
 
@@ -86,6 +104,9 @@ public class History {
             return false;
         }
         final History other = (History) obj;
+        if (this.CountOfProduct != other.CountOfProduct) {
+            return false;
+        }
         if (!Objects.equals(this.Id, other.Id)) {
             return false;
         }
@@ -100,6 +121,11 @@ public class History {
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "History{" + "Id=" + Id + ", GiveOfDate=" + GiveOfDate + ", product=" + product + ", user=" + user + ", CountOfProduct=" + CountOfProduct + '}';
+    }
     
     
-}
+} 

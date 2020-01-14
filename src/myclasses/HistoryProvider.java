@@ -56,30 +56,13 @@ public class HistoryProvider {
         System.out.println("Выберите покупателя: ");
         int indexAqcuier = scanner.nextInt();
         Acquier acquier = acquiers.get(indexAqcuier-1);
-        History history = new History(null, product, acquier);
-        //History history = new History();
-        //history.setBook(product);
-        //history.setAcquier(acquier);
-        //history.setGiveOfDate(new Date());
+        
+        System.out.print("Введи количество продуктов: ");
+        int countProduct = this.scanner.nextInt();
+       
+        History history = new History(null, product, acquier,countProduct);
+        
         return history;
     }
 
-    /*public void returnBook(ArrayList<History> histories) {
-        System.out.println("---- Возврат книги ----");
-        System.out.println("Список историй:");
-        for (int i = 0; i < histories.size(); i++) {
-            History history = histories.get(i);
-            if(history.getReturnOfDate()==null){
-               System.out.println(i+". Читатель "+history.getReader().getName()
-                        +" "+history.getReader().getSurname()
-                        +" читает книгу: "
-                        + history.getBook().getName()
-                ); 
-            }
-        }
-        System.out.println("Выберите нужный номер истории");
-        int numHistory = scanner.nextInt();
-        History history = histories.get(numHistory);
-        history.setReturnOfDate(new Date());
-    }*/
 }

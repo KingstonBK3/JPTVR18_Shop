@@ -25,6 +25,7 @@ public class App {
     private ArrayList<Acquier> acquiers = new ArrayList<>();
     private ArrayList<History> histories = new ArrayList<>();
     private Savable savable;
+    private int income = 0;
         public App() {
             this.savable = new SaverToFile();
            // this.saveble = new SaverToBase();
@@ -98,7 +99,12 @@ public class App {
                     break;
             //Подсчет прибыли магазиа за все время работы.
                 case 6:
-                    System.out.println("Функция не готова!");
+                    for(History history1 : histories){
+                        int Price = history1.getProduct().getPrice();
+                        int CountP = history1.getCountOfProduct();
+                        this.income = Price * CountP;
+                    }
+                    System.out.println("Прибыль магазина: "+ this.income);
                     break;
                 default:
                     System.out.println("Выберите задачу из списка!");
